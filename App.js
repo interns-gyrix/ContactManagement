@@ -1,19 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
- export default function App() 
- {
+import Login from "./src/screens/login/login";
+import Routes from "./src/screens/routes";
+
+export default function App() {
   return (
-    <View style={styles.container}>
-      <Text> Hey !!! boiiii</Text>
-    </View>
+    <Routes />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
