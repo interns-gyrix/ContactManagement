@@ -1,10 +1,10 @@
 {
+  "expoServerNgrokUrl": "https://nb-hnu.anonymous.contactmanagement.exp.direct",
+  "packagerNgrokUrl": "https://packager.nb-hnu.anonymous.contactmanagement.exp.direct",
+  "ngrokPid": 5088,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 3260,
-  "expoServerNgrokUrl": "https://87-ggp.gyrixtechnolabs929.contactmanagement.exp.direct",
-  "packagerNgrokUrl": "https://packager.87-ggp.gyrixtechnolabs929.contactmanagement.exp.direct",
-  "ngrokPid": 3268,
+  "packagerPort": null,
+  "packagerPid": null,
   "webpackServerPort": null
 }

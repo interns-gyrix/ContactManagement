@@ -1,6 +1,7 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Login from "./login/login";
 import Signup from "./signup/signup";
+import AddContact from "./addc/AddContact";
 
 const AppNavigator = createStackNavigator({
   Signup: {
@@ -9,9 +10,12 @@ const AppNavigator = createStackNavigator({
   Login: {
     screen: Login
   },
+  AddContact: {
+    screen: AddContact
+  }
 },
   {
-    initialRouteName: "Signup"
+    initialRouteName: "AddContact"
   }
 );
 
