@@ -1,13 +1,12 @@
 import React from "react";
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import { styles } from "./signupstyles";
-import Icon from 'react-native-vector-icons/Ionicons'
 
 
 export default class SignUp extends React.Component {
-  
+
   static navigationOptions = ({ navigate }) => ({
-    header : null
+    header: null
   })
 
   render() {
@@ -15,11 +14,13 @@ export default class SignUp extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.headbar}>
-          <Text style={{fontSize:30,color:'white'}}>SIGN UP</Text>
+          <Text style={{ fontSize: 30, color: 'white' }}>SIGN UP</Text>
+        </View>
+        <View style={{ width: "100%", alignItems: "center" }}>
+          <Image resizeMode="contain" style={{ height: 150, width: 200 }} source={require('../../../assets/logo.png')} />
         </View>
         <View style={styles.mainbox}>
-          <Icon name={'ios-person'} size={28} color={'blue'} style={{top:10, position:'absolute'}} />
-          
+         
           <TextInput
             style={styles.inputStyles}
             placeholder="USERNAME"
@@ -27,7 +28,6 @@ export default class SignUp extends React.Component {
             underlineColorAndroid="transparent"
           />
 
-          <Icon name={'ios-call'} size={28} color={'blue'} style={{top:27, position:'absolute'}}/>
           
           <TextInput
             style={styles.inputStyles}
@@ -35,21 +35,18 @@ export default class SignUp extends React.Component {
             placeholderTextColor="grey"
           />
 
-          <Icon name={'ios-lock'} size={28} color={'blue'} style={{top:50, position:'absolute'}}/>
           <TextInput
             style={styles.inputStyles}
             placeholder="PASSWORD"
             placeholderTextColor="grey"
           />
 
-          <Icon name={'ios-lock'} size={28} color={'blue'} style={{top:70, position:'absolute'}}/>
-
-          <TextInput
+         <TextInput
             style={styles.inputStyles}
             placeholder="RE-ENTER PASSWORD"
             placeholderTextColor="grey"
           />
-          <View style={{width: "100%", alignItems: "center"}}>
+          <View style={{ width: "100%", alignItems: "center" }}>
             <TouchableOpacity onPress={() => {
               this.props.navigation.navigate("contactpage")
             }}

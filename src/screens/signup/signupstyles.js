@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
         backgroundColor:'blue',
         justifyContent:'center',
         alignItems:'center',
-        marginBottom: 100
 
     },
     mainbox: {
@@ -37,8 +36,6 @@ export const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 1,
         justifyContent: "center",
-        padding:"5%",
-        alignItems:"stretch",
         marginBottom: 15,
     },
     footer: {
