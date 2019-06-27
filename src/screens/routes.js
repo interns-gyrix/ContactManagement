@@ -13,9 +13,6 @@ const AppNavigator = createStackNavigator({
   Utilities: {
     screen: Utilities
   },
-    contactpage: {
-    screen: contactpage
-  },
   Addcontact: {
     screen: Addcontact
   },
@@ -30,7 +27,7 @@ const AppNavigator = createStackNavigator({
   }
 },
   {
-    initialRouteName: "login"
+    initialRouteName: "Login"
   }
 );
 
