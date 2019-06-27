@@ -1,16 +1,26 @@
 import React from "react";
-import { View, Text, Button, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, Button, TouchableOpacity, TextInput, Modal, TouchableHighlight } from "react-native";
 import { styles } from "./loginstyle";
 
 export default class Login extends React.Component {
-  
-  static navigationOptions ={
-    title: "LOGIN" ,
+
+  state = {
+    modalVisible: false,
+  }
+
+  static navigationOptions = {
+    title: "LOGIN",
     headerTitleStyle: {
-      textAlign:"center",
-      flex:1
-      
+      textAlign: "center",
+      flex: 1
+
     },
+  }
+
+  triggerModal = () => {
+    this.setState({
+      modalVisible: true
+    })
   }
 
   render() {
@@ -20,12 +30,12 @@ export default class Login extends React.Component {
           style={styles.inputStyle}
           placeholder='USERNAME'
           placeholderTextColor="black"
-           />
+        />
         <TextInput
-           style={styles.inputStyle}
-           placeholder='PASSWORD'
-           placeholderTextColor="black"
-          />
+          style={styles.inputStyle}
+          placeholder='PASSWORD'
+          placeholderTextColor="black"
+        />
         <TouchableOpacity style={styles.Button} onPress={() => {
 
           this.props.navigation.navigate("FlatListBasics")
@@ -42,9 +52,31 @@ export default class Login extends React.Component {
           ></Button>
 
         </TouchableOpacity>
-           
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            this.setState({
+              modalVisible: false
+            })
+          }}>
+          <View style={{ marginTop: 22 }}>
+            <View>
+              <Text>Hello World!</Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setState({
+                    modalVisible: false,
+                  })
+                }}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
           </View>
+        </Modal>
+      </View>
     );
   }
 }
-  
