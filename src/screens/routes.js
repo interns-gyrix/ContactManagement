@@ -4,6 +4,7 @@ import Signup from "./signup/signup";
 import Addcontact from "./addc/AddContact";
 import contactpage from "./contactpage/contactpage";
 import utilities from "./utilities/utilities";
+import Profile from "./profile/profile";
 
 const AppNavigator = createStackNavigator({
   contactpage: {
@@ -21,9 +22,12 @@ const AppNavigator = createStackNavigator({
   utilities: {
     screen: utilities
   },
+  Profile : {
+    screen: Profile
+  }
 },
   {
-    initialRouteName: "Login"
+    initialRouteName: "login"
   }
 );
 
