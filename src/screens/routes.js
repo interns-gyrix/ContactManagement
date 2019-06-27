@@ -1,26 +1,18 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import login from "./login/login";
+import Login from "./login/login";
 import Signup from "./signup/signup";
-import Addcontact from "./addc/AddContact";
-import contactpage from "./contactpage/contactpage";
-import utilities from "./utilities/utilities";
+import AddContact from "./addc/AddContact";
 
 const AppNavigator = createStackNavigator({
-  contactpage: {
-    screen: contactpage
-  },
-  Addcontact: {
-    screen: Addcontact
-  },
   Signup: {
     screen: Signup
   },
-  login: {
-    screen: login
+  Login: {
+    screen: Login
   },
-  utilities: {
-    screen: utilities
-  },
+  AddContact: {
+    screen: AddContact
+  }
 },
   {
     initialRouteName: "Login"
