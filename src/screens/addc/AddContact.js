@@ -18,21 +18,21 @@ export default class AddContact extends React.Component {
 
         <View style={{ width: "100%", alignItems: "center" }}>
           <Image source={require("./../../../assets/addc.png")}
-            style={{marginTop :20,marginBottom:50,width: 100, height: 100, }} />
+            style={{ marginTop: 20, marginBottom: 50, width: 100, height: 100, }} />
         </View>
 
-        <View style={{ flexDirection:"row"}}>
+        <View style={{ flexDirection: "row" }}>
 
           <View style={styles.inputFieldContainer}>
             <Text>NAME</Text>
-            <TextInput style={{marginLeft :110,borderRadius:10, borderWidth:0.5}} placeholder='Enter Name'
+            <TextInput style={{ marginLeft: 110, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Name'
               onChangeText={(text) => {
                 this.setState({
                   name: text
                 })
                 console.log("State", this.state.name)
               }}
-              
+
               value={this.state.name}
             />
           </View>
@@ -40,7 +40,7 @@ export default class AddContact extends React.Component {
 
         <View style={styles.inputFieldContainer}>
           <Text>NUMBER </Text>
-          <TextInput style={{marginLeft : 92,borderRadius:10, borderWidth:0.5}} placeholder='Enter Number'
+          <TextInput style={{ marginLeft: 92, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Number'
             onChangeText={(text) => {
               this.setState({
                 number: text
@@ -53,7 +53,7 @@ export default class AddContact extends React.Component {
 
         <View style={styles.inputFieldContainer}>
           <Text>EMAIL </Text>
-          <TextInput style={{marginLeft : 107,borderRadius:10, borderWidth:0.5}} placeholder='Enter Mail'
+          <TextInput style={{ marginLeft: 107, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Mail'
             onChangeText={(text) => {
               this.setState({
                 email: text
@@ -66,7 +66,7 @@ export default class AddContact extends React.Component {
 
         <View style={styles.inputFieldContainer}>
           <Text>ADDRESS </Text>
-          <TextInput style={{marginLeft : 89,borderRadius:10, borderWidth:0.5}} placeholder='Enter Address'
+          <TextInput style={{ marginLeft: 89, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Address'
             onChangeText={(text) => {
               this.setState({
                 address: text
@@ -79,7 +79,7 @@ export default class AddContact extends React.Component {
 
         <View style={styles.inputFieldContainer}>
           <Text>BLOOD-GROUP </Text>
-          <TextInput style={{marginLeft : 60,borderRadius:10, borderWidth:0.5}} placeholder='Enter Blood Group'
+          <TextInput style={{ marginLeft: 60, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Blood Group'
             onChangeText={(text) => {
               this.setState({
                 bloodgroup: text
@@ -92,7 +92,7 @@ export default class AddContact extends React.Component {
 
         <View style={styles.inputFieldContainer}>
           <Text>D.O.B</Text>
-          <TextInput style={{marginLeft : 116, borderRadius:10, borderWidth:0.5}} placeholder='Enter Date of Birth'
+          <TextInput style={{ marginLeft: 116, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Date of Birth'
             onChangeText={(text) => {
               this.setState({
                 Dob: text
@@ -105,7 +105,7 @@ export default class AddContact extends React.Component {
 
         <View style={styles.inputFieldContainer}>
           <Text>OCCUPATION </Text>
-          <TextInput style={{marginLeft : 68,borderRadius:10, borderWidth:0.5}} placeholder='Enter Occupation'
+          <TextInput style={{ marginLeft: 68, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Occupation'
             onChangeText={(text) => {
               this.setState({
                 occup: text
@@ -142,6 +142,6 @@ const styles = StyleSheet.create({
   inputFieldContainer: {
     flexDirection: 'row',
     marginBottom: 15,
-    
+
   }
 });

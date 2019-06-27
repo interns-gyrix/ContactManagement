@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text,TouchableOpacity,Button } from "react-native";
 import { styles } from "./utilitiesstyles";
 
-export default class Login extends React.Component {
+export default class Utilities extends React.Component {
     static navigationOptions={
         title:"UTILITIES",
         headerTitleStyle:{

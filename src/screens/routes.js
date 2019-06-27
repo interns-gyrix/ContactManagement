@@ -1,33 +1,33 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import login from "./login/login";
+import Login from "./login/login";
 import Signup from "./signup/signup";
 import Addcontact from "./addc/AddContact";
-import contactpage from "./contactpage/contactpage";
-import utilities from "./utilities/utilities";
+import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
+import FlatListBasics from "./contactpage/contactpage";
 
 const AppNavigator = createStackNavigator({
-  contactpage: {
-    screen: contactpage
+  Signup: {
+    screen: Signup
+  },
+  Login: {
+    screen: Login
   },
   Addcontact: {
     screen: Addcontact
   },
-  Signup: {
-    screen: Signup
-  },
-  login: {
-    screen: login
-  },
-  utilities: {
-    screen: utilities
-  },
-  Profile : {
+  Profile: {
     screen: Profile
+  },
+  FlatListBasics: {
+    screen: FlatListBasics
+  },
+  Utilities: {
+    screen: Utilities
   }
 },
   {
-    initialRouteName: "login"
+    initialRouteName: "FlatListBasics"
   }
 );
 
