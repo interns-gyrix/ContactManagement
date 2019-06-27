@@ -1,31 +1,63 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Button, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import { styles } from "./signupstyles";
+import icon from 'react-native-vector-icons/Ionicons'
+
 
 export default class SignUp extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: null
+  
+  static navigationOptions = ({ navigate }) => ({
+    header : null
   })
 
   render() {
+    console.log(styles)
     return (
-      <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <TouchableOpacity onPress={() => {
-          this.props.navigation.navigate("Login")
-        }}>
-          <Button
-            onPress={() => {
+      <View style={styles.container}>
+        <View style={styles.headbar}>
+          <Text style={{fontSize:30,color:'white'}}>SIGN UP</Text>
+        </View>
+        <View style={styles.mainbox}>
+          <TextInput
+            style={styles.inputStyles}
+            placeholder="Username"
+            placeholderTextColor="grey"
+            underlineColorAndroid="transparent"
+          />
+
+          <TextInput
+            style={styles.inputStyles}
+            placeholder="Username"
+            placeholderTextColor="grey"
+          />
+
+          <TextInput
+            style={styles.inputStyles}
+            placeholder="Username"
+            placeholderTextColor="grey"
+          />
+
+          <TextInput
+            style={styles.inputStyles}
+            placeholder="Username"
+            placeholderTextColor="grey"
+          />
+          <View style={{width: "100%", alignItems: "center"}}>
+            <TouchableOpacity onPress={() => {
               this.props.navigation.navigate("Login")
             }}
-            style={{ backgroundColor: "black" }}
-            title="Learn More"
-            accessibilityLabel="Learn more about this purple button"
-          ></Button>
-        </TouchableOpacity>
+              style={{ marginTop: 15, width: "85%", backgroundColor: "blue", padding: 15, borderRadius: 10, alignItems: "center" }}
+            >
 
-        <TextInput
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        />
-        <Text>SignUp Scre dfsffen</Text>
+              <Text style={{ color: "white" }}>
+                Submit
+            </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.footer}>
+          <Text>all rigths are reserved to gyrix</Text>
+        </View>
       </View>
     );
   }

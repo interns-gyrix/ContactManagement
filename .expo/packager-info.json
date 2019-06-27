@@ -1,10 +1,10 @@
 {
-  "devToolsPort": 19002,
+  "devToolsPort": 19003,
   "expoServerPort": 19000,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "packagerPort": 19001,
+  "packagerPid": 6920,
+  "expoServerNgrokUrl": "https://pq-5rw.anonymous.contactmanagement.exp.direct",
+  "packagerNgrokUrl": "https://packager.pq-5rw.anonymous.contactmanagement.exp.direct",
+  "ngrokPid": 2956,
   "webpackServerPort": null
 }
