@@ -28,12 +28,12 @@ export default class Login extends React.Component {
           />
         <TouchableOpacity style={styles.Button} onPress={() => {
 
-          this.props.navigation.navigate("Login")
+          this.props.navigation.navigate("FlatListBasics")
 
         }}>
           <Button
             onPress={() => {
-              this.props.navigation.navigate("Login")
+              this.props.navigation.navigate("FlatListBasics")
             }}
 
             title="LOGIN"

@@ -27,7 +27,7 @@ const AppNavigator = createStackNavigator({
   }
 },
   {
-    initialRouteName: "FlatListBasics"
+    initialRouteName: "Login"
   }
 );
 
