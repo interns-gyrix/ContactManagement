@@ -5,11 +5,10 @@ import icon from 'react-native-vector-icons/Ionicons'
 
 
 export default class SignUp extends React.Component {
+  
   static navigationOptions = ({ navigate }) => ({
     header : null
   })
-    
-
 
   render() {
     console.log(styles)
