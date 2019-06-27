@@ -4,15 +4,13 @@ export const styles=StyleSheet.create({
     container:{
         
         flex:1,
-    
         backgroundColor:'white',
         alignItems:'center',
-        marginTop:50,
-
+        marginTop:100,
     },
     button_style:{
         backgroundColor:'#D3D3D3',
-        margin:15,
+        margin:5,
         height:50,
         width:'90%',
 
