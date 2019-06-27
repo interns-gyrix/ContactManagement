@@ -26,15 +26,14 @@ export const styles = StyleSheet.create({
        
     },
     inputStyles: {
-        height: 40,
         marginHorizontal: 25,
-        borderRadius:5,
+        borderRadius:20,
         backgroundColor: 'white',
         fontSize:16,
         color:'grey',
         opacity:0.5,
         paddingLeft: 30,
-        height:45 ,
+        height:50 ,
         borderColor: 'black',
         borderWidth: 1,
         justifyContent: "center",
@@ -47,4 +46,10 @@ export const styles = StyleSheet.create({
         margin: 3,
         alignItems:'center'
     },
+    icon_style:
+    {
+        position:'absolute',
+        top:15,
+        left:40,
+    }
 })

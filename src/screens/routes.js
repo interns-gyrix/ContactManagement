@@ -13,6 +13,9 @@ const AppNavigator = createStackNavigator({
   Utilities: {
     screen: Utilities
   },
+    contactpage: {
+    screen: contactpage
+  },
   Addcontact: {
     screen: Addcontact
   },

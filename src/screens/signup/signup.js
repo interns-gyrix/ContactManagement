@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { styles } from "./signupstyles";
-import icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 
 export default class SignUp extends React.Component {
@@ -18,33 +18,40 @@ export default class SignUp extends React.Component {
           <Text style={{fontSize:30,color:'white'}}>SIGN UP</Text>
         </View>
         <View style={styles.mainbox}>
+          <Icon name={'ios-person'} size={28} color={'blue'} style={{top:10, position:'absolute'}} />
+          
           <TextInput
             style={styles.inputStyles}
-            placeholder="Username"
+            placeholder="USERNAME"
             placeholderTextColor="grey"
             underlineColorAndroid="transparent"
           />
 
+          <Icon name={'ios-call'} size={28} color={'blue'} style={{top:27, position:'absolute'}}/>
+          
           <TextInput
             style={styles.inputStyles}
-            placeholder="Username"
+            placeholder="PONENUMBER"
             placeholderTextColor="grey"
           />
 
+          <Icon name={'ios-lock'} size={28} color={'blue'} style={{top:50, position:'absolute'}}/>
           <TextInput
             style={styles.inputStyles}
-            placeholder="Username"
+            placeholder="PASSWORD"
             placeholderTextColor="grey"
           />
 
+          <Icon name={'ios-lock'} size={28} color={'blue'} style={{top:70, position:'absolute'}}/>
+
           <TextInput
             style={styles.inputStyles}
-            placeholder="Username"
+            placeholder="RE-ENTER PASSWORD"
             placeholderTextColor="grey"
           />
           <View style={{width: "100%", alignItems: "center"}}>
             <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate("Login")
+              this.props.navigation.navigate("contactpage")
             }}
               style={{ marginTop: 15, width: "85%", backgroundColor: "blue", padding: 15, borderRadius: 10, alignItems: "center" }}
             >
