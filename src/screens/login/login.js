@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, TouchableOpacity, TextInput, Modal, TouchableHighlight } from "react-native";
+import { View, Text, Button, TouchableOpacity, TextInput, Modal, TouchableHighlight, Image } from "react-native";
 import { styles } from "./loginstyle";
 
 export default class Login extends React.Component {
@@ -14,12 +14,7 @@ export default class Login extends React.Component {
       headerTitleStyle: {
         textAlign: "center",
         flex: 1
-      },
-      headerRight: <Button
-        onPress={() => navigation.openDrawer()}
-        title="Info"
-        color="#000"
-      />
+      }
     }
   }
 
@@ -32,6 +27,11 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.Container}>
+        <View style={{ width: "100%", alignItems: "center", marginBottom: 50}}>
+          <Image resizeMode="contain" style={{ height: 150, width: 200}}
+          source={require('../../../assets/logo.png')}/>
+        </View>
+
         <TextInput
           style={styles.inputStyle}
           placeholder='USERNAME'
