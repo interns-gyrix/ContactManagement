@@ -8,13 +8,19 @@ export default class Login extends React.Component {
     modalVisible: false,
   }
 
-  static navigationOptions = {
-    title: "LOGIN",
-    headerTitleStyle: {
-      textAlign: "center",
-      flex: 1
-
-    },
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "LOGIN",
+      headerTitleStyle: {
+        textAlign: "center",
+        flex: 1
+      },
+      headerRight: <Button
+        onPress={() => navigation.openDrawer()}
+        title="Info"
+        color="#000"
+      />
+    }
   }
 
   triggerModal = () => {

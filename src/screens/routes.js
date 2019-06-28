@@ -1,10 +1,11 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
 import Signup from "./signup/signup";
 import Addcontact from "./addc/AddContact";
 import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
 import FlatListBasics from "./contactpage/contactpage";
 import Login from "./login/login";
+import Sidebar from "./../components/sidebar/sidebar"
 
 const AppNavigator = createStackNavigator({
   Signup: {
@@ -31,4 +32,21 @@ const AppNavigator = createStackNavigator({
   }
 );
 
-export default createAppContainer(AppNavigator);
+
+const RootStack = createDrawerNavigator(
+  {
+      Login: {
+          screen: AppNavigator,
+          navigationOptions: {
+              drawerLockMode: "locked-closed",
+          }
+      }
+  },
+  {
+      contentComponent: Sidebar,
+      drawerWidth: 200,
+      drawerPosition: 'right',
+  }
+);
+
+export default createAppContainer(RootStack);
