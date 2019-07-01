@@ -3,17 +3,19 @@ import { AppRegistry, FlatList, StyleSheet, Text, View, Button, Image, Touchable
 import { styles } from './contactpagestyles';
 
 export default class FlatListBasics extends React.Component {
-   
+
+
     static navigationOptions = {
         title: "CONTACTS",
-        headerTitleStyle: { 
-        textAlign:"center", 
-        flex:1 
-    },
+        headerTitleStyle: {
+            textAlign: "center",
+            flex: 1
+        },
     }
-        render() {
+    render() {
         return (
-            <View style={styles.container}>               
+            <View style={styles.container}>
+               
                 <FlatList
                     data={[
                         { key: 'CONTACT1' },
@@ -34,29 +36,29 @@ export default class FlatListBasics extends React.Component {
                     renderItem={
                         ({ item }) => {
                             return (
-                             
-                               <View style={styles.container}> 
-                        
-                            
-                               
-                               <View>
-                                    <Image
-                                        style={{ width: 60, height: 50, marginLeft: 5, marginBottom: 10 }}
-                                        source={require('../../../assets/blank.png')}/>
 
-                                  </View>
-                                  <View key = {item.key}>
-                                    <Text style={styles.item}>{item.key}</Text>
-                                  </View>
-                                  
-                                
+                                <View style={styles.container}>
+
+
+
+                                    <View>
+                                        <Image
+                                            style={{ width: 60, height: 50, marginLeft: 5, marginBottom: 10 }}
+                                            source={require('../../../assets/blank.png')} />
+
+                                    </View>
+                                    <View key={item.key}>
+                                        <Text style={styles.item}>{item.key}</Text>
+                                    </View>
+
+
                                 </View>
                             )
                         }
 
                     }
                 />
-                
+
             </View>
         );
     }

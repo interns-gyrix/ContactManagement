@@ -5,7 +5,11 @@ import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
 import FlatListBasics from "./contactpage/contactpage";
 import Login from "./login/login";
+<<<<<<< Updated upstream
 import Sidebar from "./../components/sidebar/sidebar"
+=======
+import imagebutton from "./addc/imagebutton";
+>>>>>>> Stashed changes
 
 const AppNavigator = createStackNavigator({
   Signup: {
@@ -25,10 +29,9 @@ const AppNavigator = createStackNavigator({
   },
   Login: {
     screen: Login
-  }
-},
+},},
   {
-    initialRouteName: "Login"
+    initialRouteName: "FlatListBasics"
   }
 );
 

@@ -117,8 +117,7 @@ export default class AddContact extends React.Component {
         </View>
 
         <Button
-          //style={{width:50, borderRadius:10, borderWidth:0.5}}
-          //onPress={onPressLearnMore}
+        
           title="ADD"
           color="#841584"
           accessibilityLabel="Save Contact"
