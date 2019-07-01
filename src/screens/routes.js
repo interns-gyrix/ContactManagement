@@ -5,7 +5,14 @@ import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
 import FlatListBasics from "./contactpage/contactpage";
 import Login from "./login/login";
+<<<<<<< HEAD
 import Sidebar from "./../components/sidebar/sidebar";
+=======
+import Sidebar from "./../components/sidebar/sidebar"
+import { initialiseFirebase } from "../../util/firebaseManager";
+
+initialiseFirebase();
+>>>>>>> bd0d8321b96ffe4d0c6bfb58d34f01d930846595
 
 const AppNavigator = createStackNavigator({
   Signup: {
@@ -34,17 +41,17 @@ const AppNavigator = createStackNavigator({
 
 const RootStack = createDrawerNavigator(
   {
-      Login: {
-          screen: AppNavigator,
-          navigationOptions: {
-              drawerLockMode: "locked-closed",
-          }
+    Login: {
+      screen: AppNavigator,
+      navigationOptions: {
+        drawerLockMode: "locked-closed",
       }
+    }
   },
   {
-      contentComponent: Sidebar,
-      drawerWidth: 200,
-      drawerPosition: 'right',
+    contentComponent: Sidebar,
+    drawerWidth: 200,
+    drawerPosition: 'right',
   }
 );
 
