@@ -9,7 +9,7 @@ export default class FlatListBasics extends React.Component {
         title: "CONTACTS",
         headerTitleStyle: {
             textAlign: "center",
-            flex: 1
+            flex: 1,
         },
     }
     render() {

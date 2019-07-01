@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, Image, Button, onPressLearnMore, accessibilityLabel, TouchableOpacity, TextInput, View } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+
 
 export default class AddContact extends React.Component {
   state = {
