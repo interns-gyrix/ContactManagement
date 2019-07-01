@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, Button, TouchableOpacity, TextInput, Modal, TouchableHighlight, Image } from "react-native";
 import { styles } from "./loginstyle";
+import {initialiseFirebase, signUp} from "./../../../util/firebaseManager";
+
 
 export default class Login extends React.Component {
 
@@ -22,6 +24,13 @@ export default class Login extends React.Component {
     this.setState({
       modalVisible: true
     })
+  }
+
+  componentDidMount() {
+
+  initialiseFirebase();
+  signUp();
+
   }
 
   render() {
