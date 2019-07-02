@@ -1,6 +1,6 @@
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
 import Signup from "./signup/signup";
-import Addcontact from "./addc/AddContact";
+import AddContact from "./addc/AddContact";
 import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
 import FlatListBasics from "./contactpage/contactpage";
@@ -14,8 +14,8 @@ const AppNavigator = createStackNavigator({
   Utilities: {
     screen: Utilities
   },
-  Addcontact: {
-    screen: Addcontact
+  AddContact: {
+    screen: AddContact
   },
   Profile: {
     screen: Profile

@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
         height: 50,
         color:'black',
         marginLeft: 30,
+
        
         
     

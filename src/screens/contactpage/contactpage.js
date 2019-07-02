@@ -1,19 +1,33 @@
 import React from 'react';
-import { AppRegistry, FlatList, StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { styles } from './contactpagestyles';
 
 export default class FlatListBasics extends React.Component {
-   
-    static navigationOptions = {
+
+    static navigationOptions = ({ navigation }) =>{
+        return {
         title: "CONTACTS",
-        headerTitleStyle: { 
-        textAlign:"center", 
-        flex:1 
-    },
+        headerRight: (
+            <View>
+
+                <TouchableOpacity onPress={() => {
+                                            navigation.navigate("AddContact")
+                                        }}>
+                     <Image source={require("./../../../assets/addc.png")}
+                     style={{ marginTop: 20, marginBottom: 25, width: 60, height: 60, }} />
+                </TouchableOpacity>
+
+            </View>
+        ),
+        headerTitleStyle: {
+            textAlign: "center",
+            flex: 1
+        },
     }
-        render() {
+}
+    render() {
         return (
-            <View style={styles.container}>               
+            <View style={styles.container}>
                 <FlatList
                     data={[
                         { key: 'CONTACT1' },
@@ -34,29 +48,33 @@ export default class FlatListBasics extends React.Component {
                     renderItem={
                         ({ item }) => {
                             return (
-                             
-                               <View style={styles.container}> 
-                        
-                            
-                               
-                               <View>
-                                    <Image
-                                        style={{ width: 60, height: 50, marginLeft: 5, marginBottom: 10 }}
-                                        source={require('../../../assets/blank.png')}/>
 
-                                  </View>
-                                  <View key = {item.key}>
-                                    <Text style={styles.item}>{item.key}</Text>
-                                  </View>
-                                  
-                                
+                                <View style={styles.container}>
+
+
+
+                                    <View>
+                                        <Image
+                                            style={{ width: 60, height: 50, marginLeft: 5, marginBottom: 10, marginTop: 10 }}
+                                            source={require('../../../assets/blank.png')} />
+
+                                    </View>
+                                    <View>
+                                        <TouchableOpacity onPress={() => {
+                                            this.props.navigation.navigate("Profile")
+                                        }} key={item.key}>
+                                            <Text style={styles.item}>{item.key}</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+
                                 </View>
                             )
                         }
 
                     }
                 />
-                
+
             </View>
         );
     }
