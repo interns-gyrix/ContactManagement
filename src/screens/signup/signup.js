@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+import { View, Text, TouchableOpacity, TextInput, Image, AsyncStorage } from "react-native";
 import { styles } from "./signupstyles";
-import { signUp, sendVerificationEmail, setData } from "../../../util/firebaseManager"
+import { signUp, sendVerificationEmail, setMyProfile } from "../../../util/firebaseManager"
 
 export default class SignUp extends React.Component {
 
@@ -17,8 +17,6 @@ export default class SignUp extends React.Component {
   }
 
   onSubmit = () => {
-    console.log("TCL: onsubmit -> onsubmit start")
-
     if (this.state.email && this.state.password) {
       console.log("TCL: onSubmit -> this.state.email", this.state.email)
       signUp({ email: this.state.email, password: this.state.password })
@@ -28,17 +26,17 @@ export default class SignUp extends React.Component {
         })
         .then((res) => {
           console.log("res", res);
-          return setData({ mobileNumber: this.state.phoneNumber, email: this.state.email })
+          return setMyProfile({ mobileNumber: this.state.phoneNumber, email: this.state.email })
         })
         .then((res) => {
           console.log("FIRESTORE RES", res)
+          AsyncStorage.setItem('email', this.state.email);
           this.props.navigation.navigate("FlatListBasics")
         })
         .catch((error) => {
           console.log("TCL: onSubmit -> error", error)
 
         })
-      console.log("TCL: onSubmit -> signUp end")
     } else {
       console.log("TCL: onSubmit -> this.state.email bhaiya galat hai")
 
@@ -96,7 +94,7 @@ export default class SignUp extends React.Component {
 
               <Text style={{ color: "white" }}>
                 Submit
-            </Text>
+</Text>
             </TouchableOpacity>
           </View>
         </View>

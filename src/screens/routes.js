@@ -41,7 +41,7 @@ const RootStack = createDrawerNavigator(
     Login: {
       screen: AppNavigator,
       navigationOptions: {
-        drawerLockMode: "locked-closed",
+        // drawerLockMode: "locked-closed",
       }
     }
   },
