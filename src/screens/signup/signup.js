@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import { styles } from "./signupstyles";
-
+import { signUp, sendVerificationEmail, setData } from "../../../util/firebaseManager"
 
 export default class SignUp extends React.Component {
 
@@ -9,8 +9,45 @@ export default class SignUp extends React.Component {
     header: null
   })
 
+  state = {
+    email: "",
+    password: "",
+    phoneNumber: "",
+    confirmPassword: "",
+  }
+
+  onSubmit = () => {
+    console.log("TCL: onsubmit -> onsubmit start")
+
+    if (this.state.email && this.state.password) {
+      console.log("TCL: onSubmit -> this.state.email", this.state.email)
+      signUp({ email: this.state.email, password: this.state.password })
+        .then((response) => {
+          console.log("TCL: onSubmit -> response", response)
+          return sendVerificationEmail(response)
+        })
+        .then((res) => {
+          console.log("res", res);
+          return setData({ mobileNumber: this.state.phoneNumber, email: this.state.email })
+        })
+        .then((res) => {
+          console.log("FIRESTORE RES", res)
+          this.props.navigation.navigate("FlatListBasics")
+        })
+        .catch((error) => {
+          console.log("TCL: onSubmit -> error", error)
+
+        })
+      console.log("TCL: onSubmit -> signUp end")
+    } else {
+      console.log("TCL: onSubmit -> this.state.email bhaiya galat hai")
+
+    }
+
+    // 
+  }
+
   render() {
-    console.log(styles)
     return (
       <View style={styles.container}>
         <View style={styles.headbar}>
@@ -20,35 +57,39 @@ export default class SignUp extends React.Component {
           <Image resizeMode="contain" style={{ height: 150, width: 200 }} source={require('../../../assets/logo.png')} />
         </View>
         <View style={styles.mainbox}>
-         
+
           <TextInput
             style={styles.inputStyles}
-            placeholder="USERNAME"
+            placeholder="Email"
             placeholderTextColor="grey"
             underlineColorAndroid="transparent"
+            onChangeText={(text) => this.setState({ email: text })}
           />
 
-          
-          <TextInput
-            style={styles.inputStyles}
-            placeholder="PONENUMBER"
-            placeholderTextColor="grey"
-          />
 
           <TextInput
             style={styles.inputStyles}
-            placeholder="PASSWORD"
+            placeholder="Phone Number"
             placeholderTextColor="grey"
+            onChangeText={(text) => this.setState({ phoneNumber: text })}
           />
 
-         <TextInput
+          <TextInput
             style={styles.inputStyles}
-            placeholder="RE-ENTER PASSWORD"
+            placeholder="Password"
             placeholderTextColor="grey"
+            onChangeText={(text) => this.setState({ password: text })}
+          />
+
+          <TextInput
+            style={styles.inputStyles}
+            placeholder="Confirm Password"
+            placeholderTextColor="grey"
+            onChangeText={(text) => this.setState({ confirmPassword: text })}
           />
           <View style={{ width: "100%", alignItems: "center" }}>
             <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate("contactpage")
+              this.onSubmit()
             }}
               style={{ marginTop: 15, width: "85%", backgroundColor: "blue", padding: 15, borderRadius: 10, alignItems: "center" }}
             >
