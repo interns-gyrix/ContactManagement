@@ -1,6 +1,7 @@
 
 import * as firebase from "firebase";
 import 'firebase/firestore';
+import { AsyncStorage } from "react-native"
 
 var firebaseConfig = {
   apiKey: "AIzaSyAH92miq9unt_KibKzIOa7979fsSFRN2D8",
@@ -88,10 +89,10 @@ export function addContact(data) {
 
 
 
-export function getMyProfileData() {
+export function getMyProfileData(email) {
   return new Promise((resolve, reject) => {
     const db = firebase.firestore();
-    db.collection('harshlg929@gmail.com').get()
+    db.collection(email).get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           console.log(doc);
