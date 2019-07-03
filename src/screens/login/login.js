@@ -1,15 +1,13 @@
 import React from "react";
-import { View, Text, Button, ScrollView, KeyboardAvoidingView, Platform, TouchableOpacity, TextInput, Modal, TouchableHighlight, Image } from "react-native";
+import { View, Text, ScrollView, KeyboardAvoidingView, Platform, TouchableOpacity, TextInput, Modal, TouchableHighlight, Image, AsyncStorage } from "react-native";
 import { styles } from "./loginstyle";
-import { initialiseFirebase, signIn, readData } from "./../../../util/firebaseManager";
-
-
+import { initialiseFirebase, signIn, getMyProfileData } from "./../../../util/firebaseManager";
 export default class Login extends React.Component {
 
   state = {
     modalVisible: false,
-    email: "",
-    password: "",
+    email: "aviral.pandey16@gmail.com",
+    password: "123456",
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -22,14 +20,20 @@ export default class Login extends React.Component {
     }
   }
 
-
-  componentDidMount() {
-    initialiseFirebase();
-  }
   triggerModal = () => {
     this.setState({
       modalVisible: true
     })
+  }
+
+  componentDidMount() {
+    getMyProfileData()
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   onLogin = () => {
@@ -39,11 +43,12 @@ export default class Login extends React.Component {
       signIn(this.state.email, this.state.password)
         .then((response) => {
           if (response.user.emailVerified) {
-            return readData({ email: this.state.email })
+            return getMyProfileData({ email: this.state.email })
           }
         })
         .then((response) => {
           console.log("Firestore Response ", response)
+          AsyncStorage.setItem('email', this.state.email);
           this.props.navigation.navigate("FlatListBasics")
         })
         .catch((error) => {

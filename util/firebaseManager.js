@@ -55,10 +55,10 @@ export function signIn(email, password) {
 
 
 
-export function setData(data) {
+export function setMyProfile(data) {
   return new Promise((resolve, reject) => {
     var db = firebase.firestore();
-    db.collection(data.email).add({
+    db.collection(data.email).doc("myProfile").set({
       mobileNumber: data.mobileNumber,
     })
       .then((res) => {
@@ -70,10 +70,28 @@ export function setData(data) {
   })
 }
 
-export function readData(data) {
+export function addContact(data) {
+  console.log("TCL: addContact -> data", data)
   return new Promise((resolve, reject) => {
     var db = firebase.firestore();
-    db.collection(data.email).get()
+    db.collection(data.userEmail).doc("contacts").collection('list').add(data)
+      .then((res) => {
+        console.log("TCL: addContact -> res")
+        resolve(res);
+      })
+      .catch((error) => {
+        console.log("TCL: addContact -> error")
+        reject(error);
+      });
+  })
+}
+
+
+
+export function getMyProfileData() {
+  return new Promise((resolve, reject) => {
+    const db = firebase.firestore();
+    db.collection('harshlg929@gmail.com').get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           console.log(doc);
@@ -82,6 +100,22 @@ export function readData(data) {
       })
       .catch((error) => {
         reject(error);
+      });
+  })
+}
+
+export function getContacts(email) {
+  return new Promise((resolve, reject) => {
+    const db = firebase.firestore();
+    let contacts = [];
+    firebase.firestore().collection(email).doc("contacts").collection("list").get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log("TCL: getContacts -> doc.data()", doc.data())
+
+          contacts = [...contacts, doc.data()]
+        });
+        resolve(contacts)
       });
   })
 }

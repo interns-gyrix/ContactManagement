@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, Image, Button, onPressLearnMore, accessibilityLabel, TouchableOpacity, TextInput, View } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { StyleSheet, Text, Image, Button, TextInput, View, AsyncStorage } from 'react-native';
+import { addContact } from "./../../../util/firebaseManager";
 
 export default class AddContact extends React.Component {
+
   state = {
     name: '',
     number: '',
@@ -11,6 +12,33 @@ export default class AddContact extends React.Component {
     bloodgroup: '',
     Dob: '',
     occup: ''
+  }
+
+  addContact = () => {
+    let userEmail = "";
+    AsyncStorage.getItem('email')
+      .then((response) => {
+        console.log("TCL: AddContact -> addContact -> response", response)
+        userEmail = response
+        let data = {
+          name: this.state.name,
+          number: this.state.number,
+          email: this.state.email,
+          address: this.state.address,
+          bloodgroup: this.state.bloodgroup,
+          Dob: this.state.Dob,
+          occup: this.state.occup,
+          userEmail: userEmail
+        }
+        addContact(data)
+          .then((res) => {
+            // console.log(res);
+          })
+          .catch((error) => {
+            // console.log(error);
+          })
+      })
+
   }
   render() {
     return (
@@ -30,7 +58,6 @@ export default class AddContact extends React.Component {
                 this.setState({
                   name: text
                 })
-                console.log("State", this.state.name)
               }}
 
               value={this.state.name}
@@ -45,7 +72,6 @@ export default class AddContact extends React.Component {
               this.setState({
                 number: text
               })
-              console.log("State", this.state.number)
             }}
             value={this.state.number}
           />
@@ -58,7 +84,6 @@ export default class AddContact extends React.Component {
               this.setState({
                 email: text
               })
-              console.log("State", this.state.email)
             }}
             value={this.state.email}
           />
@@ -71,7 +96,6 @@ export default class AddContact extends React.Component {
               this.setState({
                 address: text
               })
-              console.log("State", this.state.address)
             }}
             value={this.state.address}
           />
@@ -84,7 +108,6 @@ export default class AddContact extends React.Component {
               this.setState({
                 bloodgroup: text
               })
-              console.log("State", this.state.bloodgroup)
             }}
             value={this.state.bloodgroup}
           />
@@ -97,7 +120,6 @@ export default class AddContact extends React.Component {
               this.setState({
                 Dob: text
               })
-              console.log("State", this.state.Dob)
             }}
             value={this.state.Dob}
           />
@@ -110,7 +132,6 @@ export default class AddContact extends React.Component {
               this.setState({
                 occup: text
               })
-              console.log("State", this.state.occup)
             }}
             value={this.state.occup}
           />
@@ -118,12 +139,13 @@ export default class AddContact extends React.Component {
 
         <Button
           //style={{width:50, borderRadius:10, borderWidth:0.5}}
-          //onPress={onPressLearnMore}
+          onPress={() => {
+            this.addContact();
+          }}
           title="ADD"
           color="#841584"
           accessibilityLabel="Save Contact"
         />
-
       </View >
     );
   }
