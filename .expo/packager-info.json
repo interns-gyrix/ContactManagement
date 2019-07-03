@@ -1,24 +1,9 @@
 {
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-  "packagerPort": 19001,
-  "packagerPid": 1532,
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://54-mqc.anonymous.contactmanagement.exp.direct",
-  "packagerNgrokUrl": "https://packager.54-mqc.anonymous.contactmanagement.exp.direct",
-  "ngrokPid": 24216,
-=======
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
->>>>>>> Stashed changes
   "devToolsPort": 19002,
-  "webpackServerPort": null
-=======
-  "packagerPort": null,
-  "packagerPid": null
->>>>>>> 5374d957b8d2ad709e16c9eee953f0c40dd8a275
+  "expoServerPort": 19000,
+  "packagerPort": 19003,
+  "packagerPid": 6196,
+  "expoServerNgrokUrl": "https://4q-ygm.gyrixtechnolabs929.contactmanagement.exp.direct",
+  "packagerNgrokUrl": "https://packager.4q-ygm.gyrixtechnolabs929.contactmanagement.exp.direct",
+  "ngrokPid": 6204
 }

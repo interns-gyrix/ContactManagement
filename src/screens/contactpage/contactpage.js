@@ -36,7 +36,6 @@ export default class FlatListBasics extends React.Component {
   componentDidMount() {
     getContacts("aviral.pandey16@gmail.com")
       .then((response) => {
-        console.log("TCL: FlatListBasics -> componentDidMount -> response", response)
         this.setState({
           contacts: response,
           filteredArray: response

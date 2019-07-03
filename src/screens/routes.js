@@ -11,7 +11,7 @@ import { initialiseFirebase } from "../../util/firebaseManager";
 import AboutUs from "./aboutUs/aboutUs";
 
 initialiseFirebase();
-
+console.disableYellowBox = true;
 const AppNavigator = createStackNavigator({
   Signup: {
     screen: Signup
@@ -30,10 +30,10 @@ const AppNavigator = createStackNavigator({
   },
   Login: {
     screen: Login
-},
-Landing: {
-  screen: Landing
-}
+  },
+  Landing: {
+    screen: Landing
+  }
 },
 
   {
