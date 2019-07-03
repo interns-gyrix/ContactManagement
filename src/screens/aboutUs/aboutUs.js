@@ -35,8 +35,10 @@ const styles = StyleSheet.create({
         
     },
     titleText: {
-        fontSize: 20,
+        fontSize: 60,
         fontWeight: 'bold',
+        alignItems: "center",
+        width: "100%",
     }
 });
 
