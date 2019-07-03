@@ -1,10 +1,10 @@
 {
   "packagerPort": 19001,
-  "packagerPid": 13424,
+  "packagerPid": 1532,
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://54-mqc.anonymous.contactmanagement.exp.direct",
   "packagerNgrokUrl": "https://packager.54-mqc.anonymous.contactmanagement.exp.direct",
-  "ngrokPid": 21108,
+  "ngrokPid": 24216,
   "devToolsPort": 19002,
   "webpackServerPort": null
 }

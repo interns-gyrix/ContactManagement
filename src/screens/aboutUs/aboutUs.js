@@ -11,16 +11,27 @@ export default class AboutUs extends React.Component {
                 </View>
                 <View style={styles.titleText} >
                     <Text> SdfdzfsFSDFsafaesfdfs </Text>
+
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+                    
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+                    
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+                    
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+                    
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+                    
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
+                    
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
                 </View>
             </View>
@@ -36,7 +47,7 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 60,
-        fontWeight: 'bold',
+        
         alignItems: "center",
         width: "100%",
     }
