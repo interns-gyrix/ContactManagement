@@ -6,11 +6,11 @@ export default class AboutUs extends React.Component {
     render() {
         return (
             <View>
-                <View style={styles.baseTex}>
+                <View style={styles.baseText}>
                     <Text>ABOUT US</Text>
                 </View>
                 <View style={styles.titleText} >
-                    <Text> sdfdzfsFSDFsafaesfdfs </Text>
+                    <Text> SdfdzfsFSDFsafaesfdfs </Text>
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         marginBottom: 50,
-        fontFamily: 'Cochin',
+        
     },
     titleText: {
         fontSize: 20,
