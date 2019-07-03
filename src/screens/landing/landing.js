@@ -3,7 +3,7 @@ import { View, Text, ScrollView, KeyboardAvoidingView,TouchableOpacity, TextInpu
 import { styles } from "./landingstyle";
 
 
-export default class Login extends React.Component {
+export default class Landing extends React.Component {
     static navigationOptions = ({ navigation }) => ({
           header: null
           })
