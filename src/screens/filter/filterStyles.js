@@ -4,7 +4,7 @@ export const styles=StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'white',
-        marginTop: 80,
+        marginTop: 90,
     },
 
     button_style:{
@@ -20,16 +20,16 @@ export const styles=StyleSheet.create({
     text:{
         fontSize: 20,
         marginLeft: 30,
-        marginTop: 20,
+        marginTop: 10,
     
     },
     
     text_Input:{
         color:'black',
         width: 300,
-        borderWidth: 5,
-        borderRightWidth: 5,
-        borderLeftWidth: 5,
+        borderWidth: 2,
+        borderRightWidth: 2,
+        borderLeftWidth: 2,
         borderColor: 'grey',
         paddingLeft: 20,
         textAlign:'center',
@@ -41,9 +41,9 @@ export const styles=StyleSheet.create({
         color:'black',
         width: 300,
         height: 100,
-        borderWidth: 5,
-        borderRightWidth: 5,
-        borderLeftWidth: 5,
+        borderWidth: 2,
+        borderRightWidth: 2,
+        borderLeftWidth: 2,
         borderColor: 'grey',
         paddingLeft: 20,
         textAlign:'center',

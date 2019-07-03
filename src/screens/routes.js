@@ -34,14 +34,14 @@ const AppNavigator = createStackNavigator({
   },
   Login: {
     screen: Login
-},
-Landing: {
+  },
+  Landing: {
   screen: Landing
-},
+  },
 },
 
 {
-    initialRouteName: "Landing"
+    initialRouteName: "Filter"
 }
 );
 
