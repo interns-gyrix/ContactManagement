@@ -1,15 +1,15 @@
 import React from "react";
-import { View, Text} from "react-native";
+import { View, Text } from "react-native";
 
 export default class AboutUs extends React.Component {
 
     render() {
         return (
             <View>
-                <View style={{ width: "100%", alignItems: "center", marginBottom: 50 }}>
+                <View style={styles.baseTex}>
                     <Text>ABOUT US</Text>
                 </View>
-                <View style={{ width: "100%", alignItems: "center"}} >
+                <View style={styles.titleText} >
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
@@ -27,5 +27,18 @@ export default class AboutUs extends React.Component {
         )
     };
 }
+const styles = StyleSheet.create({
+    baseText: {
+        width: "100%",
+        alignItems: "center",
+        marginBottom: 50,
+        fontFamily: 'Cochin',
+    },
+    titleText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+});
+
 
 
