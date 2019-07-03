@@ -7,6 +7,8 @@ import FlatListBasics from "./contactpage/contactpage";
 import Login from "./login/login";
 import Sidebar from "./../components/sidebar/sidebar";
 import Landing from "./landing/landing";
+import Sidebar from "./../components/sidebar/sidebar"
+import Filter from "./filter/filter";
 import { initialiseFirebase } from "../../util/firebaseManager";
 
 initialiseFirebase();
@@ -17,6 +19,9 @@ const AppNavigator = createStackNavigator({
   },
   Utilities: {
     screen: Utilities
+  },
+  Filter: {
+    screen: Filter
   },
   AddContact: {
     screen: AddContact
@@ -37,6 +42,7 @@ Landing: {
 
   {
     initialRouteName: "Landing"
+    initialRouteName: "Filter"
   }
 );
 

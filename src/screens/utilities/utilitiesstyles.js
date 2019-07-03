@@ -12,7 +12,7 @@ export const styles=StyleSheet.create({
         backgroundColor:'#D3D3D3',
         margin:5,
         height:50,
-        width:'90%',
+        
 
     },
     text:{
