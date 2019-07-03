@@ -24,8 +24,8 @@ export default class AboutUs extends React.Component {
                     <Text> sdfdzfsFSDFsafaesfdfs </Text>
                 </View>
             </View>
-        )
-    };
+        );
+    }
 }
 const styles = StyleSheet.create({
     baseText: {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 20,
         fontWeight: 'bold',
-    },
+    }
 });
 
 
