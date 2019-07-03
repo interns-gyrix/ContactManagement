@@ -1,6 +1,6 @@
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
 import Signup from "./signup/signup";
-import AddContact from "./addc/AddContact";
+import AddContact from "./AddContacts/AddContact";
 import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
 import FlatListBasics from "./contactpage/contactpage";
@@ -9,9 +9,10 @@ import Sidebar from "./../components/sidebar/sidebar";
 import Landing from "./landing/landing";
 import Filter from "./filter/filter";
 import { initialiseFirebase } from "../../util/firebaseManager";
+import AboutUs from "./aboutUs/aboutUs";
 
 initialiseFirebase();
-
+console.disableYellowBox = true;
 const AppNavigator = createStackNavigator({
   Signup: {
     screen: Signup

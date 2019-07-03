@@ -72,16 +72,13 @@ export function setMyProfile(data) {
 }
 
 export function addContact(data) {
-  console.log("TCL: addContact -> data", data)
   return new Promise((resolve, reject) => {
     var db = firebase.firestore();
     db.collection(data.userEmail).doc("contacts").collection('list').add(data)
       .then((res) => {
-        console.log("TCL: addContact -> res")
         resolve(res);
       })
       .catch((error) => {
-        console.log("TCL: addContact -> error")
         reject(error);
       });
   })
@@ -95,7 +92,6 @@ export function getMyProfileData(email) {
     db.collection(email).get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log(doc);
           resolve(doc);
         });
       })
@@ -105,6 +101,8 @@ export function getMyProfileData(email) {
   })
 }
 
+
+
 export function getContacts(email) {
   return new Promise((resolve, reject) => {
     const db = firebase.firestore();
@@ -112,9 +110,30 @@ export function getContacts(email) {
     firebase.firestore().collection(email).doc("contacts").collection("list").get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log("TCL: getContacts -> doc.data()", doc.data())
+          console.log("$$$$$$$$$$$$$$$$$$$$", doc.id)
+          let object = doc.data();
+          object.contactKey = doc.id;
+          console.log("TCL: getContacts -> object", object)
+          contacts = [...contacts, object]
+        });
+        resolve(contacts)
+      });
+  })
+}
 
-          contacts = [...contacts, doc.data()]
+export function updateContact(details) {
+  console.log("TCL: updateContact -> details", details)
+  return new Promise((resolve, reject) => {
+    const db = firebase.firestore();
+    let contacts = [];
+    firebase.firestore().collection("aviral.pandey16@gmail.com").doc("contacts").collection("list").doc(details.contactKey).update(details)
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log("$$$$$$$$$$$$$$$$$$$$", doc.id)
+          let object = doc.data();
+          object.contactKey = doc.id;
+          console.log("TCL: getContacts -> object", object)
+          contacts = [...contacts, object]
         });
         resolve(contacts)
       });

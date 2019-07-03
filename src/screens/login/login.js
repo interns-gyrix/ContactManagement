@@ -6,8 +6,8 @@ export default class Login extends React.Component {
 
   state = {
     modalVisible: false,
-    email: "",
-    password: "",
+    email: "rajatpillai2@gmail.com",
+    password: "rajat0000",
   }
 
   static navigationOptions = ({ navigation }) => {
