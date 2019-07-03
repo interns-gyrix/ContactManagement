@@ -1,6 +1,6 @@
 import { createStackNavigator, createAppContainer, createDrawerNavigator } from "react-navigation";
 import Signup from "./signup/signup";
-import AddContact from "./AddContact/AddContact";
+import AddContact from "./AddContacts/AddContact";
 import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
 import FlatListBasics from "./contactpage/contactpage";
