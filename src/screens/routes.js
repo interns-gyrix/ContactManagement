@@ -5,7 +5,8 @@ import Utilities from "./utilities/utilities";
 import Profile from "./profile/profile";
 import FlatListBasics from "./contactpage/contactpage";
 import Login from "./login/login";
-import Sidebar from "./../components/sidebar/sidebar"
+import Sidebar from "./../components/sidebar/sidebar";
+import Landing from "./landing/landing";
 import { initialiseFirebase } from "../../util/firebaseManager";
 import AboutUs from "./aboutUs/aboutUs";
 
@@ -29,13 +30,14 @@ const AppNavigator = createStackNavigator({
   },
   Login: {
     screen: Login
-  },
-  AboutUs: {
-    screen: AboutUs
-  },
 },
+Landing: {
+  screen: Landing
+}
+},
+
   {
-    initialRouteName: "AboutUs"
+    initialRouteName: "Landing"
   }
 );
 

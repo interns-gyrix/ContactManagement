@@ -6,8 +6,8 @@ export default class Login extends React.Component {
 
   state = {
     modalVisible: false,
-    email: "aviral.pandey16@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -43,7 +43,8 @@ export default class Login extends React.Component {
       signIn(this.state.email, this.state.password)
         .then((response) => {
           if (response.user.emailVerified) {
-            return getMyProfileData({ email: this.state.email })
+            console.log("TCL: onLogin -> response.user.emailVerified", response.user.emailVerified)
+            return getMyProfileData(this.state.email)
           }
         })
         .then((response) => {
@@ -74,11 +75,13 @@ export default class Login extends React.Component {
               style={styles.inputStyle}
               placeholder='USERNAME'
               placeholderTextColor="black"
+              value={this.state.email}
               onChangeText={(text) => this.setState({ email: text })}
             />
             <TextInput
               style={styles.inputStyle}
               placeholder='PASSWORD'
+              value={this.state.password}
               placeholderTextColor="black"
               onChangeText={(text) => this.setState({ password: text })}
             />

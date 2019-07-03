@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { FlatList, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { styles } from './contactpagestyles';
 import { getContacts } from "../../../util/firebaseManager";
 
@@ -29,6 +29,8 @@ export default class FlatListBasics extends React.Component {
 
   state = {
     contacts: [],
+    filteredArray: [],
+    searchText: "",
   }
 
   componentDidMount() {
@@ -36,43 +38,82 @@ export default class FlatListBasics extends React.Component {
       .then((response) => {
         console.log("TCL: FlatListBasics -> componentDidMount -> response", response)
         this.setState({
-          contacts: response
+          contacts: response,
+          filteredArray: response
         })
       })
   }
 
+  searchFunction = (text) => {
+    if (text) {
+      let filteredArray = this.state.contacts.filter((item) => {
+        if (item.name.search(text) !== -1) return item
+      })
+      this.setState({
+        filteredArray
+      })
+    } else {
+      this.setState({
+        filteredArray: this.state.contacts
+      })
+    }
+
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-
-        {this.state.contacts.length ?
-          <FlatList
-            data={this.state.contacts}
-            renderItem={
-              ({ item }) => {
-                return (
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate("Profile", { item: item })}>
-                    <View style={styles.container}>
-                      <View>
-                        <Image
-                          style={{ width: 60, height: 50, marginLeft: 5, marginBottom: 10 }}
-                          source={require('../../../assets/blank.png')} />
-                      </View>
-                      <View>
-                        <Text>{item.name}</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                )
-              }
-
-            }
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: 10,
+            borderWidth: 1,
+            borderColor: "#D3D3D3",
+            width: "80%",
+            padding: 5
+          }}
+        >
+          <Image
+            style={{ width: 25, height: 25, marginLeft: 15, marginRight: 5 }}
+            source={require('../../../assets/blank.png')} />
+          <TextInput
+            placeholder="Search"
+            onChangeText={(text) => { this.searchFunction(text) }}
           />
+        </View>
 
-          : null
 
-        }
+        <View style={styles.container}>
 
+          {this.state.contacts.length ?
+            <FlatList
+              data={this.state.filteredArray}
+              renderItem={
+                ({ item }) => {
+                  return (
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("Profile", { item: item })}>
+                      <View style={styles.container}>
+                        <View>
+                          <Image
+                            style={{ width: 60, height: 50, marginLeft: 5, marginBottom: 10 }}
+                            source={require('../../../assets/blank.png')} />
+                        </View>
+                        <View>
+                          <Text>{item.name}</Text>
+                        </View>
+                      </View>
+                    </TouchableOpacity>
+                  )
+                }
+
+              }
+            />
+
+            : null
+
+          }
+
+        </View>
       </View>
     );
   }

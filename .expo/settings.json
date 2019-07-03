@@ -3,5 +3,9 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
+<<<<<<< HEAD
   "urlRandomness": "54-mqc"
+=======
+  "urlRandomness": "vf-fay"
+>>>>>>> 5374d957b8d2ad709e16c9eee953f0c40dd8a275
 }
