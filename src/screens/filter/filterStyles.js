@@ -8,12 +8,13 @@ export const styles=StyleSheet.create({
     },
 
     button_style:{
-        backgroundColor:'grey',
+        backgroundColor:'#008080',
         margin: 5,
         height: 50,
         marginLeft: 30,
         marginRight: 30,
         marginTop: 30,
+        color: 'white',
 
     },
     

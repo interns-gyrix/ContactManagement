@@ -9,7 +9,6 @@ import Sidebar from "./../components/sidebar/sidebar";
 import Landing from "./landing/landing";
 import Filter from "./filter/filter";
 import { initialiseFirebase } from "../../util/firebaseManager";
-import AboutUs from "./aboutUs/aboutUs";
 
 initialiseFirebase();
 console.disableYellowBox = true;
@@ -36,7 +35,7 @@ const AppNavigator = createStackNavigator({
     screen: Login
   },
   Landing: {
-  screen: Landing
+   screen: Landing
   },
 },
 

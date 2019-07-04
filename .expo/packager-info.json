@@ -1,10 +1,10 @@
 {
   "packagerPort": 19001,
-  "packagerPid": 10608,
+  "packagerPid": 8104,
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://hi-xxh.anonymous.contactmanagement.exp.direct",
   "packagerNgrokUrl": "https://packager.hi-xxh.anonymous.contactmanagement.exp.direct",
-  "ngrokPid": 7220,
+  "ngrokPid": 13316,
   "devToolsPort": 19002,
   "webpackServerPort": null
 }
