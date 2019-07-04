@@ -1,9 +1,10 @@
 {
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 6196,
-  "expoServerNgrokUrl": "https://4q-ygm.gyrixtechnolabs929.contactmanagement.exp.direct",
-  "packagerNgrokUrl": "https://packager.4q-ygm.gyrixtechnolabs929.contactmanagement.exp.direct",
-  "ngrokPid": 6204
+  "packagerPort": null,
+  "packagerPid": null,
+  "webpackServerPort": null
 }
