@@ -8,7 +8,7 @@ var firebaseConfig = {
   authDomain: "smartreach-7bd09.firebaseapp.com",
   databaseURL: "https://smartreach-7bd09.firebaseio.com",
   projectId: "smartreach-7bd09",
-  storageBucket: "",
+  storageBucket: "gs://smartreach-7bd09.appspot.com",
   messagingSenderId: "944801645365",
   appId: "1:944801645365:web:1aeabb01af09cf8c"
 };
@@ -110,10 +110,8 @@ export function getContacts(email) {
     firebase.firestore().collection(email).doc("contacts").collection("list").get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log("$$$$$$$$$$$$$$$$$$$$", doc.id)
           let object = doc.data();
           object.contactKey = doc.id;
-          console.log("TCL: getContacts -> object", object)
           contacts = [...contacts, object]
         });
         resolve(contacts)
@@ -124,18 +122,59 @@ export function getContacts(email) {
 export function updateContact(details) {
   console.log("TCL: updateContact -> details", details)
   return new Promise((resolve, reject) => {
-    const db = firebase.firestore();
-    let contacts = [];
-    firebase.firestore().collection("aviral.pandey16@gmail.com").doc("contacts").collection("list").doc(details.contactKey).update(details)
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          console.log("$$$$$$$$$$$$$$$$$$$$", doc.id)
-          let object = doc.data();
-          object.contactKey = doc.id;
-          console.log("TCL: getContacts -> object", object)
-          contacts = [...contacts, object]
-        });
-        resolve(contacts)
+    AsyncStorage.getItem('email')
+      .then((res) => {
+        if (res) {
+          console.log("TCL: updateContact -> res", res)
+          let contacts = [];
+          firebase.firestore().collection(res).doc("contacts").collection("list").doc(details.contactKey).update(details)
+            .then(() => {
+              resolve()
+            })
+            .catch((error) => {
+              reject(error)
+            })
+        }
+
+      })
+  })
+}
+
+export function checkUser() {
+  return new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        resolve(user);
+      } else {
+        reject();
+      }
+    });
+  })
+}
+
+export function logout() {
+  return new Promise((resolve, reject) => {
+    firebase.auth().signOut()
+      .then(() => {
+        resolve()
+      }).catch((error) => {
+        reject()
       });
   })
+
+}
+
+export function uploadImage(blob, email) {
+  // console.log("TCL: uploadImage -> ", file)
+  return new Promise((resolve, reject) => {
+    firebase.storage().ref().child("images/" + email).put(blob)
+      .then((snapshot) => {
+        return snapshot.ref.getDownloadURL()
+      })
+      .then((downloadURL) => {
+        console.log("TCL: AddContact -> uploadImage -> snapshot", downloadURL)
+        resolve(downloadURL)
+      })
+  })
+
 }

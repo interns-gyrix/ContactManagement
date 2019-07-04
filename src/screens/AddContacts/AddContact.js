@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, Image, Button, TextInput, View, AsyncStorage } from 'react-native';
-import { addContact } from "./../../../util/firebaseManager";
+import { addContact, uploadImage } from "./../../../util/firebaseManager";
+import * as ImagePicker from 'expo-image-picker';
+import { Permissions } from 'expo';
+import Constants from "expo-constants"
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class AddContact extends React.Component {
 
@@ -11,8 +15,43 @@ export default class AddContact extends React.Component {
     address: '',
     bloodgroup: '',
     Dob: '',
-    occup: ''
+    occup: '',
+    image: ""
   }
+
+  componentDidMount() {
+    this.getPermissionAsync()
+  }
+
+  getPermissionAsync = async () => {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      if (status !== 'granted') {
+        alert('Sorry, we need camera roll permissions to make this work!');
+      }
+    }
+  }
+
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      aspect: [4, 3],
+    });
+    console.log("TCL: AddContact -> _pickImage -> result", result)
+    this.convertImage(result.uri)
+  }
+
+  convertImage = async (uri) => {
+    console.log("TCL: AddContact -> uploadImage -> uploadImage")
+    const response = await fetch(uri);
+    const blob = await response.blob();
+    uploadImage(blob, this.state.email)
+      .then((response) => {
+        this.setState({
+          image: response,
+        })
+      })
+  }
+
 
   addContact = () => {
     let userEmail = "";
@@ -28,11 +67,12 @@ export default class AddContact extends React.Component {
           bloodgroup: this.state.bloodgroup,
           Dob: this.state.Dob,
           occup: this.state.occup,
-          userEmail: userEmail
+          userEmail: userEmail,
+          image: this.state.image
         }
         addContact(data)
           .then((res) => {
-            // console.log(res);
+            this.props.navigation.navigate("FlatListBasics")
           })
           .catch((error) => {
             // console.log(error);
@@ -45,8 +85,17 @@ export default class AddContact extends React.Component {
       <View style={styles.container}>
 
         <View style={{ width: "100%", alignItems: "center" }}>
-          <Image source={require("./../../../assets/addc.png")}
-            style={{ marginTop: 20, marginBottom: 50, width: 100, height: 100, }} />
+          <TouchableOpacity onPress={() => {
+            this._pickImage()
+          }}>
+            {this.state.image ?
+              <Image source={{ uri: this.state.image + '?' + new Date().getDate() }}
+                style={{ marginTop: 20, marginBottom: 50, width: 100, height: 100, }} />
+              :
+              <Image source={require("./../../../assets/addc.png")}
+                style={{ marginTop: 20, marginBottom: 50, width: 100, height: 100, }} />
+            }
+          </TouchableOpacity>
         </View>
 
         <View style={{ flexDirection: "row" }}>

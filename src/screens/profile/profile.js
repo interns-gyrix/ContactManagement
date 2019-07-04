@@ -7,7 +7,10 @@ import {
 }
   from "react-native";
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import { updateContact } from "../../../util/firebaseManager";
+import { updateContact, uploadImage } from "../../../util/firebaseManager";
+import * as ImagePicker from 'expo-image-picker';
+import { Permissions } from 'expo';
+import Constants from "expo-constants"
 
 class Profile extends Component {
 
@@ -20,10 +23,21 @@ class Profile extends Component {
     Dob: "",
     gender: "",
     occup: "",
-    contactKey: ""
+    contactKey: "",
+    image: ""
+  }
+
+  getPermissionAsync = async () => {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      if (status !== 'granted') {
+        alert('Sorry, we need camera roll permissions to make this work!');
+      }
+    }
   }
 
   componentDidMount() {
+    this.getPermissionAsync()
     const details = this.props.navigation.getParam("item")
     console.log("TCL: Profile -> componentDidMount -> details", details)
     this.setState({
@@ -35,7 +49,8 @@ class Profile extends Component {
       Dob: details.Dob,
       occup: details.occup,
       gender: "",
-      contactKey: details.contactKey
+      contactKey: details.contactKey,
+      image: details.image
     })
   }
 
@@ -48,9 +63,36 @@ class Profile extends Component {
       bloodgroup: this.state.bloodgroup,
       Dob: this.state.Dob,
       occup: this.state.occup,
-      contactKey: this.state.contactKey
+      contactKey: this.state.contactKey,
+      image: this.state.image
     }
     updateContact(details)
+      .then((res) => {
+        this.props.navigation.navigate("FlatListBasics", { props: "props" })
+      })
+      .catch((error) => {
+
+      })
+  }
+
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      aspect: [4, 3],
+    });
+    console.log("TCL: AddContact -> _pickImage -> result", result)
+    this.convertImage(result.uri)
+  }
+
+  convertImage = async (uri) => {
+    console.log("TCL: AddContact -> uploadImage -> uploadImage")
+    const response = await fetch(uri);
+    const blob = await response.blob();
+    uploadImage(blob, this.state.email)
+      .then((response) => {
+        this.setState({
+          image: response,
+        })
+      })
   }
 
   render() {
@@ -58,9 +100,20 @@ class Profile extends Component {
       return (
         <View style={styles.container} >
           <View style={{ flexDirection: "row" }}>
-            <View>
-              <Image style={{ width: 100, height: 100, marginLeft: 170, marginTop: 20, borderRadius: 300 / 3 }} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
-            </View>
+            <TouchableOpacity onPress={() => {
+              this._pickImage()
+            }}>
+              <View>
+                {
+                  this.state.image ?
+                    <Image key={new Date().getTime()} source={{ uri: this.state.image + '?' + new Date().getTime(), CACHE: 'reload' }}
+                      style={{ width: 100, height: 100, marginLeft: 170, marginTop: 20, borderRadius: 300 / 3 }} />
+                    :
+
+                    <Image style={{ width: 100, height: 100, marginLeft: 170, marginTop: 20, borderRadius: 300 / 3 }} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+                }
+              </View>
+            </TouchableOpacity>
 
           </View>
           <View style={{ flexDirection: "row", }}>

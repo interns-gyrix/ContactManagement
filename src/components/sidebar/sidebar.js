@@ -1,7 +1,17 @@
 import React from "react";
 import { View, Text, Button, TouchableOpacity, TextInput, Image } from "react-native";
 import { styles } from "./../sidebar/sideBarStyle";
+import { logout } from "../../../util/firebaseManager";
 export default class Sidebar extends React.Component {
+
+  onLogout = () => {
+    logout()
+      .then(() => {
+        this.props.navigation.navigate('Login')
+      })
+      .catch(() => {
+      })
+  }
 
   render() {
     // console.log(this.props.navigation)
@@ -35,6 +45,14 @@ export default class Sidebar extends React.Component {
 
             <Text>
               Add Contact
+          </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+            this.onLogout()
+          }}>
+
+            <Text>
+              Log out
           </Text>
           </TouchableOpacity>
         </View>
