@@ -20,35 +20,22 @@ export const styles=StyleSheet.create({
     
     text:{
         fontSize: 20,
-        marginLeft: 30,
-        marginTop: 10,
-    
-    },
-    
-    text_Input:{
-        color:'black',
-        width: 300,
-        borderWidth: 2,
-        borderRightWidth: 2,
-        borderLeftWidth: 2,
-        borderColor: 'grey',
-        paddingLeft: 20,
-        textAlign:'center',
-        marginLeft: 30,
+        marginLeft: 10,
+        marginTop: 20,
     
     },
     
     text_address:{
-        color:'black',
-        width: 300,
+       color:'black',
+        width: "90%",
         height: 100,
-        borderWidth: 2,
-        borderRightWidth: 2,
-        borderLeftWidth: 2,
-        borderColor: 'grey',
-        paddingLeft: 20,
-        textAlign:'center',
-        marginLeft: 30,
+        borderWidth: 1,
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderColor: "black",
+        paddingLeft: 5,
+        marginLeft: 10,
+        textAlign: "left",
     
     }
 })
