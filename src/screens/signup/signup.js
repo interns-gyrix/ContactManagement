@@ -1,13 +1,21 @@
 import React from "react";
-import { View, Text, TouchableOpacity, TextInput, Image, AsyncStorage } from "react-native";
+import { View, Text, TouchableOpacity, TextInput, Image, AsyncStorage, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
 import { styles } from "./signupstyles";
 import { signUp, sendVerificationEmail, setMyProfile } from "../../../util/firebaseManager"
 
 export default class SignUp extends React.Component {
 
-  static navigationOptions = ({ navigate }) => ({
-    header: null
-  })
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Sign Up",
+      headerTitleStyle: {
+        textAlign: "center",
+        width:'85%',
+        flex: 1, 
+        marginRight:50
+      }
+    }
+  }
 
   state = {
     email: "",
@@ -47,10 +55,12 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
+      <KeyboardAvoidingView behavior={'padding'} keyboardVerticalOffset={Platform.OS === 'android' ? 82 : 0} style={{ flex: 1 }} enabled>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between' }} keyboardShouldPersistTaps='always' >
       <View style={styles.container}>
-        <View style={styles.headbar}>
+        {/* <View style={styles.headbar}>
           <Text style={{ fontSize: 30, color: 'white' }}>SIGN UP</Text>
-        </View>
+        </View> */}
         <View style={{ width: "100%", alignItems: "center" }}>
           <Image resizeMode="contain" style={{ height: 150, width: 200 }} source={require('../../../assets/logo.png')} />
         </View>
@@ -99,9 +109,11 @@ export default class SignUp extends React.Component {
           </View>
         </View>
         <View style={styles.footer}>
-          <Text>all rigths are reserved to gyrix</Text>
+          <Text>All rights are reserved to gyrix</Text>
         </View>
       </View>
+      </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

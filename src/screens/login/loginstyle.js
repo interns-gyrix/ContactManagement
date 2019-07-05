@@ -10,16 +10,18 @@ export const styles = StyleSheet.create({
 
   },
   inputStyle: {
-    fontSize: 15,
-    height: 55,
-    borderColor: '#A9A9A9',
-    justifyContent: "center",
-    alignItems: "center",
-    paddingLeft: 20,
-    borderWidth: 1,
-    marginRight: 30,
-    marginLeft: 30,
-    marginTop: 20
+    marginHorizontal: 25,
+        borderRadius:20,
+        backgroundColor: 'white',
+        fontSize:16,
+        color:'grey',
+        opacity:0.5,
+        paddingLeft: 30,
+        height:50 ,
+        borderColor: 'black',
+        borderWidth: 1,
+        justifyContent: "center",
+        marginBottom: 15,
   },
   Button: {
     borderColor: '#A9A9A9',

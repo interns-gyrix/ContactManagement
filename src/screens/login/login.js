@@ -15,7 +15,9 @@ export default class Login extends React.Component {
       title: "LOGIN",
       headerTitleStyle: {
         textAlign: "center",
-        flex: 1
+        width:'85%',
+        flex: 1, 
+        marginRight:50
       }
     }
   }
