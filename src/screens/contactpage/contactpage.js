@@ -3,6 +3,7 @@ import { FlatList, Text, View, Image, TouchableOpacity, TextInput } from 'react-
 import { styles } from './contactpagestyles';
 import { getContacts, checkUser } from "../../../util/firebaseManager";
 
+let self = this;
 export default class FlatListBasics extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
@@ -31,11 +32,10 @@ export default class FlatListBasics extends React.Component {
     contacts: [],
     filteredArray: [],
     searchText: "",
+    filterOption: null
   }
 
   componentDidMount() {
-    let object = this.props.navigation.getParam("item")
-    console.log("TCL: componentDidMount -> object", object)
     checkUser()
       .then((response) => {
         getContacts(response.email)
@@ -49,6 +49,41 @@ export default class FlatListBasics extends React.Component {
       .catch(() => {
         this.props.navigation.navigate("Login")
       })
+  }
+
+  componentWillReceiveProps(props) {
+    let object = props.navigation.getParam("item")
+    console.log("TCL: componentWillReceiveProps -> object", object)
+    let advanceFilterArray = this.state.filteredArray.filter((item) => {
+      if (object.DOB === item.Dob) {
+        return item;
+      }
+      // if (sector === item.sector ) {
+
+      // }
+      if (object.bloodGroup == item.bloodgroup) {
+        return item;
+      }
+      console.log("TCL: componentWillReceiveProps -> object.address && item.address.search(object.address) !== -1", object.address && item.address.search(object.address) !== -1)
+      if (object.address && item.address.search(object.address) !== -1) {
+        console.log("TCL: componentWillReceiveProps -> object.DOB 3")
+        return item
+      }
+
+
+    })
+    if (!Object.keys(object).length) {
+      this.setState({
+        filteredArray: this.state.contacts
+      })
+    } else {
+      console.log("TCL: componentWillReceiveProps -> else")
+      this.setState({
+        filteredArray: advanceFilterArray
+      })
+    }
+    // console.log("TCL: componentWillReceiveProps -> advanceFilterArray", advanceFilterArray)
+
   }
 
   searchFunction = (text) => {
@@ -108,6 +143,7 @@ export default class FlatListBasics extends React.Component {
   }
 
   render() {
+    console.log("TCL: render -> render", this.state.filterOption)
     return (
       <View style={{ flex: 1, alignItems: "center" }}>
         <View style={{ width: "100%", flex: 0.9 }}>

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://hi-xxh.anonymous.contactmanagement.exp.direct",
   "packagerNgrokUrl": "https://packager.hi-xxh.anonymous.contactmanagement.exp.direct",
@@ -6,4 +7,13 @@
   "devToolsPort": 19002,
   "packagerPort": 19001,
   "packagerPid": 10788
+=======
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
+>>>>>>> 0740cb7e8a29c2a657e85330e944c0196f36b986
 }

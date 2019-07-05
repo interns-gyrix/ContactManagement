@@ -67,7 +67,6 @@ export default class AddContact extends React.Component {
     let userEmail = "";
     AsyncStorage.getItem('email')
       .then((response) => {
-        console.log("TCL: AddContact -> addContact -> response", response)
         userEmail = response
         let data = {
           name: this.state.name,
