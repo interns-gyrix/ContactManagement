@@ -8,6 +8,16 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class AddContact extends React.Component {
 
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "ADD CONTACT",
+      headerTitleStyle: {
+        textAlign: "center",
+        flex: 1,
+        color:"#008080",
+      },
+    }
+  }
   state = {
     name: '',
     number: '',
@@ -92,107 +102,140 @@ export default class AddContact extends React.Component {
               <Image source={{ uri: this.state.image + '?' + new Date().getDate() }}
                 style={{ marginTop: 20, marginBottom: 50, width: 100, height: 100, }} />
               :
-              <Image source={require("./../../../assets/addc.png")}
-                style={{ marginTop: 20, marginBottom: 50, width: 100, height: 100, }} />
+              <Image source={require("./../../../assets/addcontacticon.jpg")}
+                style={{ marginTop: 20, marginBottom:20, width: 100, height: 100, }} />
             }
           </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.inputFieldContainer}>
+         <View style={{ flex: 0.3 }}>
+            <Text>Name</Text>
+          </View>
+          <View style={{ flex:0.7 }}>
+          <TextInput style={{ marginLeft: 20, marginTop: 5, borderRadius: 10, borderWidth: 0.5 ,width:"90%"}} placeholder='Enter Name'
+            onChangeText={(text) => {
+              this.setState({
+                name : text
+              })
+            }}
 
-          <View style={styles.inputFieldContainer}>
-            <Text>NAME</Text>
-            <TextInput style={{ marginLeft: 110, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Name'
-              onChangeText={(text) => {
-                this.setState({
-                  name: text
-                })
-              }}
-
-              value={this.state.name}
-            />
+            value={this.state.name}
+          />
           </View>
         </View>
 
         <View style={styles.inputFieldContainer}>
-          <Text>NUMBER </Text>
-          <TextInput style={{ marginLeft: 92, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Number'
+         <View style={{ flex: 0.3 }}>
+            <Text>Number</Text>
+          </View>
+          <View style={{flex:0.7}}>
+          <TextInput style={{ marginLeft: 20,marginTop:5, borderRadius: 10, borderWidth: 0.5 ,width:"90%"}} placeholder='Enter Number'
             onChangeText={(text) => {
               this.setState({
-                number: text
+                number : text
               })
             }}
+
             value={this.state.number}
           />
+          </View>
         </View>
+        
 
         <View style={styles.inputFieldContainer}>
-          <Text>EMAIL </Text>
-          <TextInput style={{ marginLeft: 107, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Mail'
+         <View style={{ flex: 0.3 }}>
+            <Text>Email</Text>
+          </View>
+          <View style={{flex:0.7}}>
+          <TextInput style={{ marginLeft: 20,marginTop:5, borderRadius: 10, borderWidth: 0.5 ,width:"90%"}} placeholder='Enter Email'
             onChangeText={(text) => {
               this.setState({
                 email: text
               })
             }}
+
             value={this.state.email}
           />
+          </View>
         </View>
-
+        
         <View style={styles.inputFieldContainer}>
-          <Text>ADDRESS </Text>
-          <TextInput style={{ marginLeft: 89, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Address'
+         <View style={{ flex: 0.3 }}>
+            <Text>Address</Text>
+          </View>
+          <View style={{flex:0.7}}>
+          <TextInput style={{ marginLeft: 20,marginTop:5, borderRadius: 10, borderWidth: 0.5 ,width:"90%"}} placeholder='Enter Address'
             onChangeText={(text) => {
               this.setState({
                 address: text
               })
             }}
+
             value={this.state.address}
           />
+          </View>
         </View>
-
+        
         <View style={styles.inputFieldContainer}>
-          <Text>BLOOD-GROUP </Text>
-          <TextInput style={{ marginLeft: 60, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Blood Group'
+         <View style={{ flex: 0.3 }}>
+            <Text>BloodGroup</Text>
+          </View>
+          <View style={{flex:0.7}}>
+          <TextInput style={{ marginLeft: 20,marginTop:5, borderRadius: 10, borderWidth: 0.5 ,width:"90%"}} placeholder='Enter BloodGroup'
             onChangeText={(text) => {
               this.setState({
-                bloodgroup: text
+                bloodgroup : text
               })
             }}
+
             value={this.state.bloodgroup}
           />
+          </View>
         </View>
-
+        
         <View style={styles.inputFieldContainer}>
-          <Text>D.O.B</Text>
-          <TextInput style={{ marginLeft: 116, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Date of Birth'
+         <View style={{ flex: 0.3 }}>
+            <Text>D.O.B</Text>
+          </View>
+          <View style={{flex:0.7}}>
+          <TextInput style={{ marginLeft: 20,marginTop:5, borderRadius: 10, borderWidth: 0.5 ,width:"90%"}} placeholder='Enter D.O.B'
             onChangeText={(text) => {
               this.setState({
-                Dob: text
+                Dob : text
               })
             }}
+
             value={this.state.Dob}
           />
+          </View>
         </View>
-
+        
         <View style={styles.inputFieldContainer}>
-          <Text>OCCUPATION </Text>
-          <TextInput style={{ marginLeft: 68, borderRadius: 10, borderWidth: 0.5 }} placeholder='Enter Occupation'
+         <View style={{ flex: 0.3 }}>
+            <Text>Occupation</Text>
+          </View>
+          <View style={{flex:0.7}}>
+          <TextInput style={{ marginLeft: 20,marginTop:5, borderRadius: 10, borderWidth: 0.5 ,width:"90%"}} placeholder='Enter Occupation'
             onChangeText={(text) => {
               this.setState({
                 occup: text
               })
             }}
+
             value={this.state.occup}
           />
+          </View>
         </View>
+        
+
 
         <Button
-          //style={{width:50, borderRadius:10, borderWidth:0.5}}
           onPress={() => {
             this.addContact();
           }}
           title="ADD"
-          color="#841584"
+          color="#008080"
           accessibilityLabel="Save Contact"
         />
       </View >
@@ -212,7 +255,7 @@ const styles = StyleSheet.create({
 
   inputFieldContainer: {
     flexDirection: 'row',
-    marginBottom: 15,
+    marginBottom: 10,
 
   }
 });

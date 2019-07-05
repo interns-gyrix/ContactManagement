@@ -116,15 +116,7 @@ class Profile extends Component {
             </TouchableOpacity>
 
           </View>
-          <View style={{ marginLeft: 10, width: "100%", justifyContent: "center" }} >
-            <Text style={{ fontSize: 15, color: "gray", marginTop: 30 }}>NAME: {this.state.profileDetails.name} </Text>
-            <Text style={{ fontSize: 15, color: "gray", marginTop: 30 }}>E-MAIL:  {this.state.profileDetails.email}</Text>
-            <Text style={{ fontSize: 15, color: "gray", marginTop: 30 }}>PHONE: {this.state.profileDetails.number} </Text>
-            <Text style={{ fontSize: 15, color: "gray", marginTop: 30 }}>BLOOD GROUP: {this.state.profileDetails.bloodgroup}</Text>
-            <Text style={{ fontSize: 15, color: "gray", marginTop: 30 }}>DATE OF BIRTH: {this.state.profileDetails.Dob}</Text>
-            <Text style={{ fontSize: 15, color: "gray", marginTop: 30 }}>GENDER: </Text>
-            <Text style={{ fontSize: 15, color: "gray", marginTop: 30 }}>PROFESSION: </Text>
-          </View>
+        
           <View style={{ flexDirection: "row", }}>
             <Text style={{ fontSize: 15, color: "gray", flex: 0.3 }}>Email: </Text>
             <View style={{ borderWidth: 1, borderColor: "#D3D3D3", marginLeft: 15, flex: 0.7 }}>
