@@ -50,7 +50,8 @@ class Profile extends Component {
       occup: details.occup,
       gender: "",
       contactKey: details.contactKey,
-      image: details.image
+      image: details.image,
+      address: details.address
     })
   }
 
@@ -156,6 +157,12 @@ class Profile extends Component {
             <Text style={{ fontSize: 15, color: "gray", flex: 0.3 }}>Occupation: </Text>
             <View style={{ borderWidth: 1, borderColor: "#D3D3D3", marginLeft: 15, flex: 0.7 }}>
               <TextInput style={{ width: "80%" }} value={this.state.occup} onChangeText={(text) => this.setState({ occup: text })} placeholder={this.state.occup} />
+            </View>
+          </View>
+          <View style={{ flexDirection: "row", }}>
+            <Text style={{ fontSize: 15, color: "gray", flex: 0.3 }}>Address: </Text>
+            <View style={{ borderWidth: 1, borderColor: "#D3D3D3", marginLeft: 15, flex: 0.7 }}>
+              <TextInput style={{ width: "80%" }} value={this.state.address} onChangeText={(text) => this.setState({ address: text })} placeholder={this.state.address} />
             </View>
           </View>
           <TouchableOpacity onPress={() => this.updateProfile()}>

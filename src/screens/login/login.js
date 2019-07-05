@@ -29,10 +29,8 @@ export default class Login extends React.Component {
   componentDidMount() {
     getMyProfileData()
       .then((res) => {
-        console.log(res)
       })
       .catch((error) => {
-        console.log(error);
       })
   }
 
@@ -43,17 +41,14 @@ export default class Login extends React.Component {
       signIn(this.state.email, this.state.password)
         .then((response) => {
           if (response.user.emailVerified) {
-            console.log("TCL: onLogin -> response.user.emailVerified", response.user.emailVerified)
             return getMyProfileData(this.state.email)
           }
         })
         .then((response) => {
-          console.log("Firestore Response ", response)
           AsyncStorage.setItem('email', this.state.email);
           this.props.navigation.navigate("FlatListBasics")
         })
         .catch((error) => {
-          console.log("TCL: onLogin -> error", error)
 
         })
     } else {
