@@ -4,6 +4,8 @@ import {
   View,
   Text,
   Image,
+  Platform,
+  Linking
 }
   from "react-native";
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
@@ -24,7 +26,10 @@ class Profile extends Component {
     gender: "",
     occup: "",
     contactKey: "",
-    image: ""
+    image: "",
+    address: "",
+    profession: "",
+    sector: ""
   }
 
   getPermissionAsync = async () => {
@@ -51,7 +56,9 @@ class Profile extends Component {
       gender: "",
       contactKey: details.contactKey,
       image: details.image,
-      address: details.address
+      address: details.address,
+      profession: details.profession,
+      sector: details.sector,
     })
   }
 
@@ -65,15 +72,15 @@ class Profile extends Component {
       Dob: this.state.Dob,
       occup: this.state.occup,
       contactKey: this.state.contactKey,
-      image: this.state.image
+      image: this.state.image,
+      profession: this.state.profession,
+      sector: this.state.sector,
     }
     updateContact(details)
       .then((res) => {
         this.props.navigation.navigate("FlatListBasics", { props: "props" })
       })
-      .catch((error) => {
-
-      })
+      .catch((error) => { })
   }
 
   _pickImage = async () => {
@@ -94,6 +101,35 @@ class Profile extends Component {
           image: response,
         })
       })
+  }
+
+  viewOnMap() {
+    let address = this.state.address
+    const replaced = address.split(' ').join('+');
+    if (Platform.OS === 'android') {
+      const URL = `https://www.google.com/maps/search/?api=1&query=${replaced}`
+      Linking.canOpenURL(URL)
+        .then(supported => {
+          if (!supported) {
+            // error handling
+          } else {
+            return Linking.openURL(URL)
+          }
+        })
+        .catch(err => {
+        });
+
+    } else {
+      const URL = `http://maps.apple.com/?q=${replaced}`
+      Linking.canOpenURL(URL)
+        .then(supported => {
+          if (!supported) {
+          } else {
+            return Linking.openURL(URL)
+          }
+        })
+        .catch(err => { });
+    }
   }
 
   render() {
@@ -160,8 +196,23 @@ class Profile extends Component {
               <TextInput style={{ width: "80%" }} value={this.state.address} onChangeText={(text) => this.setState({ address: text })} placeholder={this.state.address} />
             </View>
           </View>
+          <View style={{ flexDirection: "row", }}>
+            <Text style={{ fontSize: 15, color: "gray", flex: 0.3 }}>sector: </Text>
+            <View style={{ borderWidth: 1, borderColor: "#D3D3D3", marginLeft: 15, flex: 0.7 }}>
+              <TextInput style={{ width: "80%" }} value={this.state.sector} onChangeText={(text) => this.setState({ sector: text })} placeholder={this.state.sector} />
+            </View>
+          </View>
+          <View style={{ flexDirection: "row", }}>
+            <Text style={{ fontSize: 15, color: "gray", flex: 0.3 }}>profession: </Text>
+            <View style={{ borderWidth: 1, borderColor: "#D3D3D3", marginLeft: 15, flex: 0.7 }}>
+              <TextInput style={{ width: "80%" }} value={this.state.profession} onChangeText={(text) => this.setState({ profession: text })} placeholder={this.state.profession} />
+            </View>
+          </View>
           <TouchableOpacity onPress={() => this.updateProfile()}>
             <Text>Update</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.viewOnMap()}>
+            <Text>Get Direction on Map</Text>
           </TouchableOpacity>
         </View>
       )

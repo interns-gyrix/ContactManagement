@@ -54,25 +54,28 @@ export default class FlatListBasics extends React.Component {
   componentWillReceiveProps(props) {
     let object = props.navigation.getParam("item")
     console.log("TCL: componentWillReceiveProps -> object", object)
-    let advanceFilterArray = this.state.filteredArray.filter((item) => {
+    let advanceFilterArray = this.state.contacts.filter((item) => {
       if (object.DOB === item.Dob) {
         return item;
       }
-      // if (sector === item.sector ) {
-
-      // }
+      console.log("TCL: componentWillReceiveProps -> object.sector === item.sector", object.sector === item.sector)
+      if (object.sector === item.sector && !object.profession) {
+        return item
+      }
+      if (object.sector === item.sector && object.profession === item.profession) {
+        return item
+      }
       if (object.bloodGroup == item.bloodgroup) {
         return item;
       }
-      console.log("TCL: componentWillReceiveProps -> object.address && item.address.search(object.address) !== -1", object.address && item.address.search(object.address) !== -1)
       if (object.address && item.address.search(object.address) !== -1) {
-        console.log("TCL: componentWillReceiveProps -> object.DOB 3")
         return item
       }
 
 
     })
-    if (!Object.keys(object).length) {
+    console.log("TCL: componentWillReceiveProps -> Object.keys(object).length == 0", Object.keys(object).length == 0)
+    if (Object.keys(object).length == 0) {
       this.setState({
         filteredArray: this.state.contacts
       })
@@ -82,7 +85,7 @@ export default class FlatListBasics extends React.Component {
         filteredArray: advanceFilterArray
       })
     }
-    // console.log("TCL: componentWillReceiveProps -> advanceFilterArray", advanceFilterArray)
+    console.log("TCL: componentWillReceiveProps -> advanceFilterArray", advanceFilterArray)
 
   }
 
@@ -143,7 +146,7 @@ export default class FlatListBasics extends React.Component {
   }
 
   render() {
-    console.log("TCL: render -> render", this.state.filterOption)
+    console.log("TCL: render -> render", this.state.filteredArray)
     return (
       <View style={{ flex: 1, alignItems: "center" }}>
         <View style={{ width: "100%", flex: 0.9 }}>

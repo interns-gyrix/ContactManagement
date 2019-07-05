@@ -1,13 +1,16 @@
 import React from "react";
-import { View, Text, ScrollView, KeyboardAvoidingView, Platform, TouchableOpacity, TextInput, Modal, TouchableHighlight, Image, AsyncStorage } from "react-native";
+import { View, Text, ScrollView, KeyboardAvoidingView, Platform, TouchableOpacity, TextInput, Modal, TouchableHighlight, Image, AsyncStorage, ActivityIndicator } from "react-native";
 import { styles } from "./loginstyle";
 import { initialiseFirebase, signIn, getMyProfileData } from "./../../../util/firebaseManager";
+import Loader from "../../components/loader/loader";
+
 export default class Login extends React.Component {
 
   state = {
     modalVisible: false,
     email: "rajatpillai2@gmail.com",
     password: "rajat0000",
+    loader: false
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -15,9 +18,9 @@ export default class Login extends React.Component {
       title: "LOGIN",
       headerTitleStyle: {
         textAlign: "center",
-        width:'85%',
-        flex: 1, 
-        marginRight:50
+        width: '85%',
+        flex: 1,
+        marginRight: 50
       }
     }
   }
@@ -37,6 +40,9 @@ export default class Login extends React.Component {
   }
 
   onLogin = () => {
+    this.setState({
+      loader: true,
+    })
     if (this.state.email && this.state.password) {
       console.log("TCL: onLogin -> this.state.password", this.state.password)
       console.log("TCL: onLogin -> this.state.email", this.state.email)
@@ -47,11 +53,16 @@ export default class Login extends React.Component {
           }
         })
         .then((response) => {
+          this.setState({
+            loader: false,
+          })
           AsyncStorage.setItem('email', this.state.email);
           this.props.navigation.navigate("FlatListBasics")
         })
         .catch((error) => {
-
+          this.setState({
+            loader: false,
+          })
         })
     } else {
 
@@ -61,6 +72,10 @@ export default class Login extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView behavior={'padding'} keyboardVerticalOffset={Platform.OS === 'android' ? 82 : 0} style={{ flex: 1 }} enabled>
+        {this.state.loader ?
+          <Loader />
+          : null
+        }
         <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between' }} keyboardShouldPersistTaps='always' >
           <View style={styles.Container}>
             <View style={{ width: "100%", alignItems: "center", marginBottom: 50 }}>

@@ -19,6 +19,7 @@ export default class Filter extends React.Component {
     address: "",
     DOBFrom: "",
     DOBTo: "",
+    profession: ""
   }
 
   onSubmit = () => {
@@ -27,6 +28,7 @@ export default class Filter extends React.Component {
     if (this.state.bloodGroup && this.state.bloodGroup !== "Select...") {
       details.bloodGroup = this.state.bloodGroup;
     }
+
     if (this.state.sector && this.state.sector !== "Select...") {
       details.sector = this.state.sector;
     }
@@ -34,8 +36,14 @@ export default class Filter extends React.Component {
     if (this.state.address) {
       details.address = this.state.address;
     }
-    console.log("TCL: Filter -> onSubmit -> details", !details)
 
+    if (this.state.sector) {
+      details.sector = this.state.sector;
+    }
+
+    if (this.state.profession) {
+      details.profession = this.state.profession;
+    }
     this.props.navigation.navigate("FlatListBasics", { item: details })
   }
 
@@ -61,7 +69,6 @@ export default class Filter extends React.Component {
             <Picker.Item label="B-" value="B-" />
             <Picker.Item label="AB+" value="AB+" />
             <Picker.Item label="AB-" value="AB-" />
-
           </Picker>
         </View>
         <Text style={styles.text}>Sector</Text>
@@ -75,13 +82,26 @@ export default class Filter extends React.Component {
               }
             }}>
             <Picker.Item label="Select..." value="Select..." />
-            <Picker.Item label="Medical" value="Medical" />
-            <Picker.Item label="Hospitality" value="Hospitality" />
-            <Picker.Item label="Business" value="Busines" />
-            <Picker.Item label="Emergency" value="Emergency" />
-            <Picker.Item label="Others" value="Others" />
+            <Picker.Item label="0" value="0" />
+            <Picker.Item label="1" value="1" />
+            <Picker.Item label="2" value="2" />
+            <Picker.Item label="3" value="3" />
+            <Picker.Item label="4" value="4" />
+            <Picker.Item label="5" value="5" />
+            <Picker.Item label="6" value="6" />
+            <Picker.Item label="7" value="7" />
           </Picker>
         </View>
+        {this.state.sector ?
+          <View>
+            <Text style={styles.text}>Profession</Text>
+            <TextInput style={styles.text_address}
+              placeholder="Enter Profession"
+              onChangeText={(text) => this.setState({ profession: text })}
+              value={this.state.profession} />
+          </View>
+          : null
+        }
         <Text style={styles.text}>Address</Text>
         <TextInput style={styles.text_address}
           placeholder="Enter Address"

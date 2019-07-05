@@ -1,19 +1,9 @@
 {
-<<<<<<< HEAD
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://hi-xxh.anonymous.contactmanagement.exp.direct",
-  "packagerNgrokUrl": "https://packager.hi-xxh.anonymous.contactmanagement.exp.direct",
-  "ngrokPid": 2224,
   "devToolsPort": 19002,
+  "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 10788
-=======
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
-  "webpackServerPort": null
->>>>>>> 0740cb7e8a29c2a657e85330e944c0196f36b986
+  "packagerPid": 4698,
+  "expoServerNgrokUrl": "https://ks-8a5.pandeyji.contactmanagement.exp.direct",
+  "packagerNgrokUrl": "https://packager.ks-8a5.pandeyji.contactmanagement.exp.direct",
+  "ngrokPid": 4706
 }
