@@ -13,39 +13,43 @@ export default class Utilities extends React.Component {
        
     render() {
         return (
-            <View style={styles.container}>
-            <View style={styles.button_style}>
+            <View>
+                <View style={styles.button_style}>
                 <TouchableOpacity onPress={this._onPressButton}>
                     <Text style={styles.text}>HOSPITAL</Text>
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 </View>
                 
                 <View style={styles.button_style}>
                 <TouchableOpacity onPress={this._onPressButton}>
                     <Text style={styles.text}>POLICE</Text>
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 </View>
+                
                 <View style={styles.button_style}>
                 <TouchableOpacity onPress={this._onPressButton}>
                     <Text style={styles.text}>HOTEL</Text>
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 </View>
+                
                 <View style={styles.button_style}>
                 <TouchableOpacity onPress={this._onPressButton}>
                     <Text style={styles.text}>PARK</Text>
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 </View>
+                
                 <View style={styles.button_style}>
                 <TouchableOpacity onPress={this._onPressButton}>
                     <Text style={styles.text}>GROCERY</Text>
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 </View>
+                
                 <View style={styles.button_style}>
                 <TouchableOpacity onPress={this._onPressButton}>
                     <Text style={styles.text}>SALON</Text>
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 </View>
-            </View >
+            </View>
         )
     }
 
